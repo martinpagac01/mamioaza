@@ -89,11 +89,11 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative grid grid-cols-2 gap-4 p-4 group cursor-pointer"
+              className="relative grid grid-cols-2 gap-4 group cursor-pointer"
               onClick={() => setIsVideoModalOpen(true)}
             >
               <div className="space-y-4">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-black/10">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[32px]">
                   <Image
                     src="/img1.jpg"
                     alt="Deti hrajúce sa s padákom"
@@ -102,7 +102,7 @@ export default function Hero() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-black/10">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[32px]">
                   <Image
                     src="/img3.jpg"
                     alt="Skupinová aktivita s deťmi"
@@ -113,7 +113,7 @@ export default function Hero() {
                 </div>
               </div>
               <div className="space-y-4 pt-8">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-black/10">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[32px]">
                   <Image
                     src="/img2.jpg"
                     alt="Dieťa prechádzajúce cez prekážky"
@@ -122,7 +122,7 @@ export default function Hero() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-black/10">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[32px]">
                   <Image
                     src="/img4.jpg"
                     alt="Deti pri spoločnej aktivite"
@@ -133,7 +133,7 @@ export default function Hero() {
                 </div>
               </div>
               {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/5 group-hover:bg-black/10 transition-colors duration-300">
+              <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div 
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
