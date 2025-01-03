@@ -7,6 +7,7 @@ import Reviews from '@/components/ui/sections/Reviews';
 import ActivityCategories from '@/components/pages/activities/ActivityCategories';
 import FAQ from '@/components/ui/sections/FAQ';
 import CallToAction from '@/components/ui/sections/CallToAction';
+import Partners from '@/components/ui/sections/Partners';
 
 export default function Home() {
   return (
@@ -66,6 +67,11 @@ export default function Home() {
           <div className="absolute left-1/4 bottom-20 w-72 h-72 bg-gradient-to-tr from-[#F8941C]/4 to-transparent rounded-full blur-2xl"></div>
         </div>
         <FAQ />
+      </div>
+
+      {/* Partners Section */}
+      <div className="relative bg-[#FFF9F2]">
+        <Partners />
       </div>
 
       {/* Call to Action Section */}
