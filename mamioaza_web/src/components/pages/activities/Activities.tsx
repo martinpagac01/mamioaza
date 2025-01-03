@@ -100,10 +100,11 @@ export default function Activities() {
     }
   }, [initialCategory]);
 
-  const { ref: filterRef, inView: filterInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
+  const titleInViewOptions = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: titleRef, inView: titleInView } = titleInViewOptions;
+
+  const activitiesInViewOptions = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: activitiesRef, inView: activitiesInView } = activitiesInViewOptions;
 
   const categories = [
     { id: 'all', name: 'Všetky aktivity', color: '#1E293B' },
@@ -276,8 +277,6 @@ export default function Activities() {
 
   const titleRef = useRef(null);
   const activitiesRef = useRef(null);
-  const titleInView = useInView(titleRef);
-  const activitiesInView = useInView(activitiesRef);
 
   const springTransition = {
     type: "spring",
@@ -398,10 +397,10 @@ export default function Activities() {
       <div className="max-w-7xl mx-auto">
         {/* Filter Section */}
         <motion.div
-          ref={filterRef}
+          ref={activitiesRef}
           variants={filterAnimation}
           initial="hidden"
-          animate={filterInView ? "visible" : "hidden"}
+          animate={activitiesInView ? "visible" : "hidden"}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
           <motion.button
