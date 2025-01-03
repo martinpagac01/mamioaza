@@ -33,8 +33,11 @@ export default function Header() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Brand Logo */}
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center relative">
               <span className="text-2xl font-bold text-primary">MAMI-OÁZA</span>
+              <span className="absolute -top-3 -right-16 bg-primary/10 text-primary text-xs px-2 py-1 rounded-full font-medium">
+                Zlaté Moravce
+              </span>
             </Link>
 
             {/* Center Navigation */}

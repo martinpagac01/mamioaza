@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FaFacebookSquare, FaStar } from 'react-icons/fa';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { HiOutlineArrowLeft, HiOutlineArrowRight } from 'react-icons/hi';
 
 const reviews = [
   {
@@ -75,15 +75,22 @@ export default function Reviews() {
   };
 
   return (
-    <section className="py-24">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-neutral-cool overflow-hidden relative">
+      {/* Playful background shapes */}
+      <div className="absolute inset-0">
+        <div className="absolute -top-1/3 -right-1/3 w-2/3 h-2/3 bg-primary/5 rounded-[200px] transform rotate-6"></div>
+        <div className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-primary/5 rounded-[150px] transform -rotate-12"></div>
+        <div className="absolute top-1/3 right-1/3 w-48 h-48 bg-primary/5 rounded-full"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative">
         <div className="max-w-7xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-16">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="inline-block text-[#F8941C] uppercase tracking-wider font-medium mb-4"
+              className="inline-block text-primary uppercase tracking-wider font-medium mb-4"
             >
               REFERENCIE
             </motion.span>
@@ -114,10 +121,10 @@ export default function Reviews() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-3xl shadow-xl p-8 md:p-12"
+                className="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-primary/5"
               >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-primary/10">
                     <Image
                       src={reviews[currentIndex].photo}
                       alt={reviews[currentIndex].author}
@@ -126,18 +133,18 @@ export default function Reviews() {
                     />
                   </div>
                   <div>
-                    <div className="flex items-center mb-1">
+                    <div className="flex items-center gap-1 mb-2">
                       {[...Array(reviews[currentIndex].rating)].map((_, i) => (
-                        <FaStar key={i} className="w-5 h-5 text-yellow-400" />
+                        <FaStar key={i} className="w-5 h-5 text-primary" />
                       ))}
                     </div>
-                    <h3 className="font-semibold text-gray-800">
+                    <h3 className="font-bold text-[#1E293B] text-lg">
                       {reviews[currentIndex].author}
                     </h3>
                   </div>
                 </div>
                 
-                <p className="text-gray-700 text-lg mb-6">
+                <p className="text-[#475569] text-lg leading-relaxed">
                   "{reviews[currentIndex].text}"
                 </p>
               </motion.div>
@@ -146,29 +153,29 @@ export default function Reviews() {
               <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between pointer-events-none">
                 <button
                   onClick={prevReview}
-                  className="transform -translate-x-1/2 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-primary hover:text-primary-dark transition-colors pointer-events-auto"
+                  className="transform -translate-x-6 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-primary hover:text-white hover:bg-primary transition-all duration-300 pointer-events-auto border border-primary/10"
                   aria-label="Previous review"
                 >
-                  <FiChevronLeft className="w-6 h-6" />
+                  <HiOutlineArrowLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={nextReview}
-                  className="transform translate-x-1/2 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-primary hover:text-primary-dark transition-colors pointer-events-auto"
+                  className="transform translate-x-6 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-primary hover:text-white hover:bg-primary transition-all duration-300 pointer-events-auto border border-primary/10"
                   aria-label="Next review"
                 >
-                  <FiChevronRight className="w-6 h-6" />
+                  <HiOutlineArrowRight className="w-5 h-5" />
                 </button>
               </div>
             </div>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center space-x-2 mt-6">
+            <div className="flex justify-center space-x-2 mt-8">
               {reviews.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex ? 'bg-primary w-4' : 'bg-gray-300'
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex ? 'bg-primary w-6' : 'bg-primary/20'
                   }`}
                   aria-label={`Go to review ${index + 1}`}
                 />
@@ -180,13 +187,13 @@ export default function Reviews() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-12 text-center relative z-30"
+              className="mt-12 text-center relative"
             >
               <Link 
                 href="https://www.facebook.com/mcmamioaza/reviews"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 text-lg font-medium text-[#1877F2] bg-[#1877F2]/5 hover:bg-[#1877F2]/10 rounded-full transition-all hover:-translate-y-0.5 cursor-pointer"
+                className="inline-flex items-center gap-2 px-8 py-4 text-lg font-medium text-[#1877F2] bg-[#1877F2]/5 hover:bg-[#1877F2]/10 rounded-full transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
               >
                 <FaFacebookSquare className="w-6 h-6" />
                 <span>Pozrite si všetky recenzie na Facebooku</span>

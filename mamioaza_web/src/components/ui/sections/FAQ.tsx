@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiPlus, FiMinus } from 'react-icons/fi';
 
 export default function FAQ() {
   const faqs = [
@@ -76,28 +75,36 @@ export default function FAQ() {
                 className="bg-white rounded-2xl shadow-sm overflow-hidden"
               >
                 <button
-                  className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-primary/5 transition-colors duration-300"
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full text-left relative block z-10"
                 >
-                  <span className="font-bold text-[#1E293B] group-hover:text-primary transition-colors duration-300">{faq.question}</span>
-                  <svg
-                    className={`w-6 h-6 transform transition-transform text-primary ${openIndex === index ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                  <div className="w-full px-8 py-6 flex justify-between items-center transition-all duration-300 cursor-pointer group">
+                    <span className="font-bold text-[#1E293B] pointer-events-none group-hover:text-primary transition-colors duration-300">{faq.question}</span>
+                    <svg
+                      className={`w-6 h-6 transform transition-all duration-300 text-primary ${openIndex === index ? 'rotate-180' : ''} pointer-events-none`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </div>
                 </button>
                 {openIndex === index && (
-                  <div className="px-8 pb-6">
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="px-8 pb-6"
+                  >
                     <p className="text-[#475569]">{faq.answer}</p>
-                  </div>
+                  </motion.div>
                 )}
               </motion.div>
             ))}
