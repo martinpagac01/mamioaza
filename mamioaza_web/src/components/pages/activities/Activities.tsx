@@ -273,12 +273,35 @@ export default function Activities() {
 
   return (
     <div className="min-h-screen bg-cream">
-      <div className="py-12 px-4 sm:px-6 lg:px-8">
-        <PageTitle 
-          title="Aktivity"
-          subtitle="AKTIVITY"
-          className="mb-12"
-        />
+      <div className="pt-24 pb-24 px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-5xl mx-auto mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block text-primary uppercase tracking-wider font-medium mb-4"
+          >
+            AKTIVITY PRE KAŽDÉHO
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-[#1E293B] text-4xl lg:text-5xl font-bold mb-6"
+          >
+            Aktivity
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-neutral-600 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed"
+          >
+            Od cvičenia s bábätkami až po rodinné aktivity. Vyberte si z našej pestrej ponuky aktivít pre všetky vekové kategórie.
+          </motion.p>
+        </div>
         
         <div className="max-w-7xl mx-auto">
           {/* Filter Section */}
