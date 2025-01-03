@@ -69,9 +69,9 @@ function ActivityCard({ title, description, ageRange, activityType, color = 'blu
   };
 
   const getCardBackground = () => {
-    if (activityType === 'mother') return 'bg-[#4C7BF4]/5';
-    if (activityType === 'family') return 'bg-[#FF6B6B]/5';
-    return 'bg-[#9747FF]/5'; // default for children activities
+    if (activityType === 'mother') return 'bg-[#4C7BF4]/10 border border-[#4C7BF4]/20';
+    if (activityType === 'family') return 'bg-[#FF6B6B]/10 border border-[#FF6B6B]/20';
+    return 'bg-[#9747FF]/10 border border-[#9747FF]/20'; // default for children activities
   };
 
   return (
@@ -81,7 +81,7 @@ function ActivityCard({ title, description, ageRange, activityType, color = 'blu
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
-      className={`${getCardBackground()} rounded-3xl p-6 h-full`}
+      className={`${getCardBackground()} rounded-3xl p-6 h-full hover:shadow-lg transition-shadow duration-300`}
     >
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-neutral-600 mb-4">{description}</p>

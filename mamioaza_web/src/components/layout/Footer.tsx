@@ -25,8 +25,8 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <p className="text-neutral-600 text-sm md:text-base font-medium mb-1">Zavolajte nám</p>
-                  <a href="tel:+421903123456" className="text-primary hover:text-primary-dark transition-colors text-lg md:text-xl font-semibold">
-                    +421 903 123 456
+                  <a href="tel:+421902092905" className="text-primary hover:text-primary-dark transition-colors text-lg md:text-xl font-semibold">
+                    +421 902 092 905
                   </a>
                 </div>
               </motion.div>
@@ -43,8 +43,8 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <p className="text-neutral-600 text-sm md:text-base font-medium mb-1">Napíšte nám</p>
-                  <a href="mailto:info@mamioaza.sk" className="text-primary hover:text-primary-dark transition-colors text-lg md:text-xl font-semibold">
-                    info@mamioaza.sk
+                  <a href="mailto:mamioazazm@gmail.com" className="text-primary hover:text-primary-dark transition-colors text-lg md:text-xl font-semibold">
+                    mamioazazm@gmail.com
                   </a>
                 </div>
               </motion.div>

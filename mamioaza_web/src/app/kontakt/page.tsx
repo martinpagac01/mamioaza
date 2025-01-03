@@ -196,8 +196,9 @@ export default function ContactPage() {
                 </ContactItem>
 
                 <ContactItem icon={<FaEnvelope className="w-5 h-5 text-primary" />} title="Email" index={3}>
-                  <a href="mailto:info@mamioaza.sk" className="hover:text-primary transition-colors">
-                    info@mamioaza.sk
+                  <p className="text-neutral-600">Máte otázky? Napíšte nám:</p>
+                  <a href="mailto:mamioazazm@gmail.com" className="hover:text-primary transition-colors">
+                    mamioazazm@gmail.com
                   </a>
                 </ContactItem>
 

@@ -22,6 +22,20 @@ export default function Home() {
         <Hero />
       </div>
 
+      {/* Activities Section */}
+      <div className="relative bg-white transform-gpu">
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Subtle texture */}
+          <div className="absolute inset-0 contain-paint" style={{
+            backgroundImage: 'url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CiAgPHBhdGggZD0iTTAgMGg2MHY2MEgweiIgZmlsbD0ibm9uZSIvPgogIDxwYXRoIGQ9Ik0zMCAzMG0tMiAwYTIgMiAwIDEgMCA0IDBhMiAyIDAwMSAwLTQgMCIgZmlsbD0iI0Y4OTQxQyIgZmlsbC1vcGFjaXR5PSIwLjAyIi8+Cjwvc3ZnPg==")'
+          }}></div>
+          {/* Gradient overlays */}
+          <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-white to-transparent transform-gpu"></div>
+          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-white to-transparent transform-gpu"></div>
+        </div>
+        <ActivityCategories />
+      </div>
+
       {/* Features Section */}
       <div className="relative bg-[#FFFAF5] transform-gpu">
         <div className="absolute inset-0 overflow-hidden">
@@ -45,20 +59,6 @@ export default function Home() {
           <div className="absolute right-0 bottom-1/4 w-80 h-80 bg-gradient-to-l from-[#F8941C]/8 to-transparent rounded-[100px] -rotate-45 blur-2xl transform-gpu will-change-transform"></div>
         </div>
         <Reviews />
-      </div>
-
-      {/* Activities Section */}
-      <div className="relative bg-white transform-gpu">
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Subtle texture */}
-          <div className="absolute inset-0 contain-paint" style={{
-            backgroundImage: 'url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CiAgPHBhdGggZD0iTTAgMGg2MHY2MEgweiIgZmlsbD0ibm9uZSIvPgogIDxwYXRoIGQ9Ik0zMCAzMG0tMiAwYTIgMiAwIDEgMCA0IDBhMiAyIDAwMSAwLTQgMCIgZmlsbD0iI0Y4OTQxQyIgZmlsbC1vcGFjaXR5PSIwLjAyIi8+Cjwvc3ZnPg==")'
-          }}></div>
-          {/* Gradient overlays */}
-          <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-white to-transparent transform-gpu"></div>
-          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-white to-transparent transform-gpu"></div>
-        </div>
-        <ActivityCategories />
       </div>
 
       {/* FAQ Section */}

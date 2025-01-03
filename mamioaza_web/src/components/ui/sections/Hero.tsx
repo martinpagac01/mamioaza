@@ -76,18 +76,18 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex flex-col sm:flex-row w-full sm:w-auto gap-4"
+                className="flex flex-row w-full justify-center lg:justify-start gap-4 md:gap-6"
               >
                 <Link
                   href="/rozvrh"
-                  className="w-full sm:w-auto inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-2xl text-base font-medium transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                  className="min-w-[160px] sm:min-w-[200px] md:min-w-[220px] inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-2xl text-sm sm:text-base md:text-lg font-medium transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
                 >
-                  <MdCalendarToday className="w-5 h-5 mr-2" />
+                  <MdCalendarToday className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
                   Pozrite si rozvrh
                 </Link>
                 <Link
                   href="/o-centre"
-                  className="w-full sm:w-auto inline-flex items-center justify-center bg-white hover:bg-gray-50 text-primary border-2 border-primary/20 px-6 py-3 rounded-2xl text-base font-medium transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                  className="min-w-[160px] sm:min-w-[200px] md:min-w-[220px] inline-flex items-center justify-center bg-white hover:bg-gray-50 text-primary border-2 border-primary/20 px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-2xl text-sm sm:text-base md:text-lg font-medium transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
                 >
                   Zistite viac o nás
                 </Link>
