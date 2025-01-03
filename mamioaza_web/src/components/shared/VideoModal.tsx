@@ -50,11 +50,11 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <video
+            <iframe
+              src="https://player.vimeo.com/video/1043663929?h=e8c5c3d4b6&autoplay=1&title=0&byline=0&portrait=0"
               className="w-full h-full"
-              controls
-              autoPlay
-              src="/video.mp4"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
             />
           </motion.div>
         </motion.div>

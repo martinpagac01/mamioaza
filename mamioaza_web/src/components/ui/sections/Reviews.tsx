@@ -180,13 +180,13 @@ export default function Reviews() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-12 text-center"
+              className="mt-12 text-center relative z-30"
             >
               <Link 
                 href="https://www.facebook.com/mcmamioaza/reviews"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 text-lg font-medium text-[#1877F2] bg-[#1877F2]/5 hover:bg-[#1877F2]/10 rounded-full transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-8 py-4 text-lg font-medium text-[#1877F2] bg-[#1877F2]/5 hover:bg-[#1877F2]/10 rounded-full transition-all hover:-translate-y-0.5 cursor-pointer"
               >
                 <FaFacebookSquare className="w-6 h-6" />
                 <span>Pozrite si všetky recenzie na Facebooku</span>
