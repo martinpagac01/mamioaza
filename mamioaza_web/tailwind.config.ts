@@ -9,13 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'logo-orange': '#F8941C',
-        primary: '#F8941C', // Main orange color
-        'primary-dark': '#E17A16', // Darker shade of main orange
-        secondary: '#1E3A8A', // Deep blue from the schedule
-        'secondary-dark': '#1E40AF',
-        accent: '#38BDF8',
-        cream: '#FFF7ED',
+        primary: '#F8941C', // Main orange
+        'primary-dark': '#e08519', // Darker orange for hover
+        'primary-light': '#FFF4E6', // Light orange background
+        secondary: '#F8941C', // Using primary orange instead of blue
+        'secondary-dark': '#e08519',
+        accent: '#F8941C', // Using primary orange
+        'accent-light': '#FFF0F0', // Soft pink background
+        'neutral-warm': '#FFF4E6', // Warm background
+        'neutral-cool': '#F8FAFF', // Cool background
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

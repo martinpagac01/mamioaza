@@ -4,16 +4,15 @@
 
 :root {
   /* Primary Colors */
-  --primary: #FF6B4A;
-  --primary-dark: #FF5A39;
-  --accent: #FFB938;
-  --accent-dark: #FF9F00;
+  --primary: #F8941C;
+  --primary-dark: #e08519;
+  --primary-light: #FFF4E6;
   
-  /* Fun Colors */
-  --fun-purple: #A259FF;
-  --fun-green: #4ADE80;
-  --fun-blue: #38BDF8;
-  --fun-pink: #EC4899;
+  /* Background Colors */
+  --bg-warm: #FFF4E6;
+  --bg-pink: #FFF0F0;
+  --bg-blue: #F0F7FF;
+  --bg-blue-light: #F8FAFF;
   
   /* Neutral Colors */
   --neutral-50: #FAFAFA;
@@ -40,8 +39,11 @@ body {
   0% {
     transform: translateY(0px) rotate(var(--rotation, 0deg));
   }
-  50% {
-    transform: translateY(-10px) rotate(var(--rotation, 0deg));
+  33% {
+    transform: translateY(-10px) rotate(calc(var(--rotation, 0deg) + 2deg));
+  }
+  66% {
+    transform: translateY(5px) rotate(calc(var(--rotation, 0deg) - 2deg));
   }
   100% {
     transform: translateY(0px) rotate(var(--rotation, 0deg));
@@ -50,6 +52,7 @@ body {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+  animation-delay: calc(var(--rotation, 0deg) * 100ms);
 }
 
 .animate-float-delayed {

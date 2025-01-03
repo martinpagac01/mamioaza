@@ -6,31 +6,22 @@ import { MdArrowForward } from 'react-icons/md';
 
 export default function CallToAction() {
   return (
-    <section className="py-32 relative overflow-hidden">
-      {/* Clean background */}
-      <div className="absolute inset-0 bg-cream" />
+    <section className="relative py-16 md:py-24 bg-primary overflow-hidden">
+      {/* Playful background shapes */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-1/4 -right-1/4 w-2/3 h-2/3 bg-white/20 rounded-[180px] transform rotate-12"></div>
+        <div className="absolute -bottom-1/4 -left-1/4 w-3/4 h-3/4 bg-white/20 rounded-[200px] transform -rotate-12"></div>
+        <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-white/30 rounded-full"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-24 h-24 bg-white/20 rounded-full"></div>
+      </div>
       
-      {/* Subtle decorative elements */}
-      <motion.div 
-        initial={{ scale: 0.5, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="absolute -left-64 w-[800px] h-[800px] bg-primary/[0.05] rounded-full blur-3xl"
-      />
-      <motion.div 
-        initial={{ scale: 0.5, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        className="absolute -right-64 w-[800px] h-[800px] bg-secondary/[0.05] rounded-full blur-3xl"
-      />
-
       <div className="container mx-auto px-4 relative">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-6xl lg:text-7xl font-bold text-primary-dark mb-8"
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
             Pridajte sa k našej komunite
           </motion.h2>
@@ -38,7 +29,7 @@ export default function CallToAction() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-2xl text-secondary mb-16 leading-relaxed"
+            className="text-lg md:text-xl text-white/90 mb-12"
           >
             Vytvárame bezpečný priestor pre vaše deti, kde môžu rásť, učiť sa a zabávať sa.
           </motion.p>
@@ -48,11 +39,11 @@ export default function CallToAction() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Link 
-              href="/kontakt"
-              className="group inline-flex items-center bg-white text-primary px-12 py-6 rounded-full text-xl font-medium hover:bg-cream transition-all hover:shadow-lg hover:-translate-y-0.5"
+              href="/kontakt" 
+              className="inline-flex items-center justify-center bg-white hover:bg-white/90 text-primary px-8 py-4 rounded-2xl text-lg font-medium transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
             >
-              <span className="mr-3">Kontaktujte nás</span>
-              <MdArrowForward className="w-7 h-7 group-hover:translate-x-1 transition-transform" />
+              Kontaktujte nás
+              <MdArrowForward className="ml-2 w-5 h-5" />
             </Link>
           </motion.div>
         </div>

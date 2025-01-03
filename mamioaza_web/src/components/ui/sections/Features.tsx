@@ -49,26 +49,33 @@ export default function Features() {
     },
     {
       title: 'Rodinná atmosféra',
-      description: 'Vytvárame príjemné prostredie, kde sa deti aj rodičia cítia ako doma.',
+      description: 'Vytvárame príjemné prostredie, kde sa každý cíti ako doma.',
       Icon: MdFavorite
     },
     {
       title: 'Aktívna komunita',
-      description: 'Spájame rodiny a vytvárame priestor pre nové priateľstvá a spoločné zážitky.',
+      description: 'Spájame rodiny a vytvárame priateľstvá, ktoré trvajú roky.',
       Icon: MdGroups
     }
-  ];
+  ]
 
   return (
-    <section className="py-24">
-      <div className="container mx-auto px-4">
+    <section className="relative py-16 md:py-24 bg-accent-light overflow-hidden">
+      {/* Playful background shapes */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-[100px] transform -rotate-12"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/10 rounded-[120px] transform rotate-45"></div>
+        <div className="absolute top-1/2 left-1/4 w-40 h-40 bg-primary/5 rounded-full"></div>
+      </div>
+
+      <div className="container relative mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-16">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="inline-block text-[#F8941C] uppercase tracking-wider font-medium mb-4"
+              className="inline-block text-primary uppercase tracking-wider font-medium mb-4"
             >
               PREČO SI NÁS VYBRAŤ
             </motion.span>
@@ -90,12 +97,13 @@ export default function Features() {
             </motion.p>
           </div>
 
-          {/* Features grid */}
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <FeatureCard
                 key={feature.title}
-                {...feature}
+                title={feature.title}
+                description={feature.description}
+                Icon={feature.Icon}
                 index={index}
               />
             ))}
@@ -103,5 +111,5 @@ export default function Features() {
         </div>
       </div>
     </section>
-  );
+  )
 }

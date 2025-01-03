@@ -1,141 +1,86 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Hero from '@/components/ui/sections/Hero';
 import Features from '@/components/ui/sections/Features';
-import ActivityCategories from '@/components/pages/activities/ActivityCategories';
 import Reviews from '@/components/ui/sections/Reviews';
+import ActivityCategories from '@/components/pages/activities/ActivityCategories';
 import FAQ from '@/components/ui/sections/FAQ';
 import CallToAction from '@/components/ui/sections/CallToAction';
-import HeartDoodle from '@/components/ui/doodles/HeartDoodle';
-import SquiggleDoodle from '@/components/ui/doodles/SquiggleDoodle';
-import StarDoodle from '@/components/ui/doodles/StarDoodle';
-import WavyDoodle from '@/components/ui/doodles/WavyDoodle';
-import ArrowDoodle from '@/components/ui/doodles/ArrowDoodle';
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden">
-      {/* Hero - Soft Orange Background */}
-      <div className="bg-[#FFF4E6] relative">
+    <main className="relative overflow-x-hidden">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-b from-[#FFF9F2] to-[#FFF4E6]">
+        {/* Floating background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -left-20 top-20 w-[600px] h-[600px] bg-gradient-to-br from-[#F8941C]/5 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute -right-40 bottom-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#F8941C]/3 to-transparent rounded-full blur-3xl"></div>
+        </div>
         <Hero />
-        <div className="absolute inset-0 z-50 pointer-events-none">
-          {/* Arrow pointing to the CTA button */}
-          <ArrowDoodle className="absolute bottom-[25%] right-[30%] w-32 h-32 text-[#96CEB4] -rotate-[135deg]" />
-          {/* Decorative elements framing the hero content */}
-          <HeartDoodle className="absolute bottom-32 right-20 w-28 h-28 text-[#4ECDC4] rotate-12" />
-        </div>
-        {/* Divider to Features section */}
-        <div className="absolute inset-x-0 bottom-0 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,0 C480,32 960,32 1440,0 L1440,32 L0,32 Z" fill="white"/>
-          </svg>
-        </div>
-      </div>
-      
-      {/* Features - Soft Blue Background */}
-      <div className="relative bg-[#F0F7FF]">
-        <div className="absolute inset-x-0 -top-8 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,32 C360,0 720,0 1080,16 C1260,24 1350,28 1440,32 L1440,32 L0,32 Z" fill="#F0F7FF"/>
-          </svg>
-        </div>
-        <Features />
-        <div className="absolute inset-0 z-50 pointer-events-none">
-          {/* Arrow pointing to feature cards */}
-          <ArrowDoodle className="absolute top-[15%] left-[10%] w-28 h-28 text-[#96CEB4] rotate-[45deg]" />
-          {/* Decorative element near feature title */}
-          <StarDoodle className="absolute top-20 right-20 w-20 h-20 text-[#4ECDC4] rotate-12" />
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,0 C480,32 960,32 1440,0 L1440,32 L0,32 Z" fill="#FFF5E9"/>
-          </svg>
-        </div>
-      </div>
-      
-      {/* Activities - Soft Blue */}
-      <div className="relative bg-[#F0F7FF]">
-        <div className="absolute inset-x-0 -top-8 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,32 C360,0 720,0 1080,16 C1260,24 1350,28 1440,32 L1440,32 L0,32 Z" fill="#F0F7FF"/>
-          </svg>
-        </div>
-        <ActivityCategories />
-        <div className="absolute inset-0 z-50 pointer-events-none">
-          {/* Arrows pointing to activity categories */}
-          <ArrowDoodle className="absolute top-[30%] right-[10%] w-32 h-32 text-[#96CEB4] rotate-[225deg]" />
-          <ArrowDoodle className="absolute top-[30%] left-[10%] w-32 h-32 text-[#4ECDC4] rotate-[135deg]" />
-          {/* Decorative element near title */}
-          <SquiggleDoodle className="absolute top-20 left-1/2 w-28 h-28 text-[#FFE66D] -rotate-12" />
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,0 C480,32 960,32 1440,0 L1440,32 L0,32 Z" fill="#FFF5E9"/>
-          </svg>
-        </div>
-      </div>
-      
-      {/* Reviews - Warm Cream */}
-      <div className="relative bg-[#FFF5E9]">
-        <div className="absolute inset-x-0 -top-8 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,32 C360,0 720,0 1080,16 C1260,24 1350,28 1440,32 L1440,32 L0,32 Z" fill="#FFF5E9"/>
-          </svg>
-        </div>
-        <Reviews />
-        <div className="absolute inset-0 z-50 pointer-events-none">
-          {/* Decorative elements framing reviews */}
-          <HeartDoodle className="absolute top-20 left-20 w-24 h-24 text-[#96CEB4] rotate-[-15deg]" />
-          <HeartDoodle className="absolute bottom-20 right-20 w-24 h-24 text-[#4ECDC4] rotate-12" />
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,0 C480,32 960,32 1440,0 L1440,32 L0,32 Z" fill="#F2F9F9"/>
-          </svg>
-        </div>
-      </div>
-      
-      {/* FAQ - Light Mint */}
-      <div className="relative bg-[#F2F9F9]">
-        <div className="absolute inset-x-0 -top-8 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,32 C360,0 720,0 1080,16 C1260,24 1350,28 1440,32 L1440,32 L0,32 Z" fill="#F2F9F9"/>
-          </svg>
-        </div>
-        <FAQ />
-        <div className="absolute inset-0 z-50 pointer-events-none">
-          {/* Arrow pointing to FAQ questions */}
-          <ArrowDoodle className="absolute top-[20%] left-[15%] w-28 h-28 text-[#96CEB4] rotate-[45deg]" />
-          {/* Decorative element */}
-          <StarDoodle className="absolute bottom-20 right-20 w-20 h-20 text-[#4ECDC4] rotate-45" />
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,0 C480,32 960,32 1440,0 L1440,32 L0,32 Z" fill="#F8941C"/>
-          </svg>
-        </div>
       </div>
 
-      {/* Call to Action - Deep Orange */}
-      <div className="relative bg-primary">
-        <div className="absolute inset-x-0 -top-8 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,32 C360,0 720,0 1080,16 C1260,24 1350,28 1440,32 L1440,32 L0,32 Z" fill="#F8941C"/>
-          </svg>
+      {/* Features Section */}
+      <div className="relative bg-[#FFFAF5]">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 w-full h-32 bg-gradient-to-b from-[#FFF4E6] to-transparent opacity-50"></div>
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(#F8941C 0.5px, transparent 0.5px), radial-gradient(#F8941C 0.5px, transparent 0.5px)',
+            backgroundSize: '20px 20px',
+            backgroundPosition: '0 0, 10px 10px',
+            opacity: '0.03'
+          }}></div>
+        </div>
+        <Features />
+      </div>
+
+      {/* Reviews Section */}
+      <div className="relative bg-gradient-to-br from-[#FFF9F2] via-[#FFF6EB] to-[#FFF4E6]">
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Floating shapes */}
+          <div className="absolute left-0 top-1/4 w-96 h-96 bg-gradient-to-r from-[#F8941C]/10 to-transparent rounded-[100px] rotate-45 blur-2xl"></div>
+          <div className="absolute right-0 bottom-1/4 w-80 h-80 bg-gradient-to-l from-[#F8941C]/8 to-transparent rounded-[100px] -rotate-45 blur-2xl"></div>
+        </div>
+        <Reviews />
+      </div>
+
+      {/* Activities Section */}
+      <div className="relative bg-white">
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Subtle texture */}
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CiAgPHBhdGggZD0iTTAgMGg2MHY2MEgweiIgZmlsbD0ibm9uZSIvPgogIDxwYXRoIGQ9Ik0zMCAzMG0tMiAwYTIgMiAwIDEgMCA0IDBhMiAyIDAwMSAwLTQgMCIgZmlsbD0iI0Y4OTQxQyIgZmlsbC1vcGFjaXR5PSIwLjAyIi8+Cjwvc3ZnPg==')]"></div>
+          {/* Gradient overlays */}
+          <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-white to-transparent"></div>
+          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-white to-transparent"></div>
+        </div>
+        <ActivityCategories />
+      </div>
+
+      {/* FAQ Section */}
+      <div className="relative bg-gradient-to-b from-[#FFFCF8] to-[#FFF9F2]">
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Floating orbs */}
+          <div className="absolute right-1/4 top-20 w-64 h-64 bg-gradient-to-br from-[#F8941C]/5 to-transparent rounded-full blur-2xl"></div>
+          <div className="absolute left-1/4 bottom-20 w-72 h-72 bg-gradient-to-tr from-[#F8941C]/4 to-transparent rounded-full blur-2xl"></div>
+        </div>
+        <FAQ />
+      </div>
+
+      {/* Call to Action Section */}
+      <div className="relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#F8941C] to-[#F9A033]">
+          {/* Dynamic background pattern */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }}></div>
+          {/* Glowing orbs */}
+          <div className="absolute -left-20 top-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+          <div className="absolute -right-20 top-0 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
         </div>
         <CallToAction />
-        <div className="absolute inset-0 z-50 pointer-events-none">
-          {/* Decorative elements */}
-          <HeartDoodle className="absolute left-10 top-1/2 w-28 h-28 text-white/80" />
-          <StarDoodle className="absolute bottom-20 left-20 w-12 h-12 text-white/80" />
-          <SquiggleDoodle className="absolute top-20 right-20 w-24 h-24 text-white/80" />
-        </div>
-        {/* Footer divider - matches footer's bg-neutral-50 */}
-        <div className="absolute inset-x-0 bottom-0 h-8">
-          <svg className="w-full h-8" viewBox="0 0 1440 32" preserveAspectRatio="none">
-            <path d="M0,0 C480,32 960,32 1440,0 L1440,32 L0,32 Z" fill="#fafafa"/>
-          </svg>
-        </div>
       </div>
     </main>
   );

@@ -6,10 +6,6 @@ import Link from 'next/link';
 import { MdCalendarToday } from 'react-icons/md';
 import { useState } from 'react';
 import VideoModal from '@/components/shared/VideoModal';
-import HeartDoodle from '@/components/ui/doodles/HeartDoodle';
-import SquiggleDoodle from '@/components/ui/doodles/SquiggleDoodle';
-import StarDoodle from '@/components/ui/doodles/StarDoodle';
-import ArrowDoodle from '@/components/ui/doodles/ArrowDoodle';
 
 export default function Hero() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -17,7 +13,34 @@ export default function Hero() {
   return (
     <>
       <VideoModal isOpen={isVideoModalOpen} onClose={() => setIsVideoModalOpen(false)} />
-      <section className="relative min-h-[85vh] flex items-center justify-center">
+      <section className="relative min-h-[85vh] flex items-center justify-center bg-primary-light overflow-hidden">
+        {/* Background pattern with rounded shapes */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Left column shapes */}
+          <div className="absolute left-8 top-12 w-48 h-48 bg-primary/10 rounded-[48px] transform rotate-12 animate-float" style={{"--rotation": "12deg"} as any}></div>
+          <div className="absolute -left-16 top-48 w-64 h-64 bg-primary/15 rounded-full animate-float" style={{"--rotation": "-8deg"} as any}></div>
+          <div className="absolute left-4 top-96 w-56 h-56 bg-primary/8 rounded-[64px] transform -rotate-12 animate-float" style={{"--rotation": "5deg"} as any}></div>
+          
+          {/* Right column shapes */}
+          <div className="absolute -right-12 top-24 w-72 h-72 bg-primary/12 rounded-[56px] transform rotate-45 animate-float" style={{"--rotation": "-12deg"} as any}></div>
+          <div className="absolute right-24 top-64 w-52 h-52 bg-primary/10 rounded-full animate-float" style={{"--rotation": "8deg"} as any}></div>
+          <div className="absolute right-8 top-[450px] w-60 h-60 bg-primary/15 rounded-[52px] transform -rotate-12 animate-float" style={{"--rotation": "-5deg"} as any}></div>
+          
+          {/* Center column shapes */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-16 w-80 h-80 bg-primary/8 rounded-[72px] transform rotate-6 animate-float" style={{"--rotation": "-10deg"} as any}></div>
+          <div className="absolute left-1/3 top-80 w-64 h-64 bg-primary/12 rounded-full animate-float" style={{"--rotation": "15deg"} as any}></div>
+          <div className="absolute right-1/3 top-[380px] w-68 h-68 bg-primary/10 rounded-[60px] transform rotate-12 animate-float" style={{"--rotation": "-15deg"} as any}></div>
+          
+          {/* Bottom row shapes */}
+          <div className="absolute left-1/4 bottom-24 w-52 h-52 bg-primary/15 rounded-[48px] transform -rotate-6 animate-float" style={{"--rotation": "10deg"} as any}></div>
+          <div className="absolute right-1/4 bottom-36 w-56 h-56 bg-primary/8 rounded-full animate-float" style={{"--rotation": "-8deg"} as any}></div>
+          <div className="absolute left-2/3 bottom-12 w-60 h-60 bg-primary/12 rounded-[56px] transform rotate-45 animate-float" style={{"--rotation": "12deg"} as any}></div>
+          
+          {/* Additional accent shapes */}
+          <div className="absolute left-40 top-32 w-44 h-44 bg-primary/20 rounded-[40px] transform rotate-45 animate-float" style={{"--rotation": "-6deg"} as any}></div>
+          <div className="absolute right-36 top-96 w-48 h-48 bg-primary/15 rounded-full animate-float" style={{"--rotation": "20deg"} as any}></div>
+          <div className="absolute left-1/2 bottom-48 w-52 h-52 bg-primary/10 rounded-[48px] transform -rotate-12 animate-float" style={{"--rotation": "-20deg"} as any}></div>
+        </div>
         {/* Main content */}
         <div className="container relative mx-auto px-4 py-8 md:py-12">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -73,7 +96,7 @@ export default function Hero() {
                 </Link>
                 <Link
                   href="/o-centre"
-                  className="inline-flex items-center justify-center bg-secondary hover:bg-secondary-dark text-white px-6 py-3 rounded-2xl text-base font-medium transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center bg-primary/20 hover:bg-primary/30 text-primary px-6 py-3 rounded-2xl text-base font-medium transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
                 >
                   Zistite viac o nás
                 </Link>
@@ -96,7 +119,6 @@ export default function Hero() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay" />
                 </div>
                 <div className="relative h-40 md:h-52 lg:h-72 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <Image
@@ -105,7 +127,6 @@ export default function Hero() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay" />
                 </div>
               </div>
               <div className="space-y-4 pt-8">
@@ -116,7 +137,6 @@ export default function Hero() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay" />
                 </div>
                 <div className="relative h-32 md:h-40 lg:h-56 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <Image
@@ -125,12 +145,11 @@ export default function Hero() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent mix-blend-overlay" />
                 </div>
               </div>
               {/* Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary/90 text-white flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-all duration-300 hover:bg-primary">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#F8941C]/90 text-white flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-all duration-300 hover:bg-[#F8941C]">
                   <svg className="w-6 h-6 md:w-8 md:h-8" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M8 5v14l11-7z" />
                   </svg>
@@ -138,12 +157,6 @@ export default function Hero() {
               </div>
             </motion.div>
           </div>
-        </div>
-
-        {/* Decorative doodles */}
-        <div className="absolute inset-0 z-50 pointer-events-none">
-          {/* Arrow pointing to the main CTA button */}
-          <ArrowDoodle className="absolute bottom-[25%] right-[30%] w-32 h-32 text-[#96CEB4] -rotate-[135deg]" />
         </div>
       </section>
     </>

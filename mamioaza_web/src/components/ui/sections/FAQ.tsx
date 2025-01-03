@@ -31,14 +31,20 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="relative py-16 md:py-24 bg-neutral-warm">
+    <section className="relative py-16 md:py-24 bg-neutral-cool overflow-hidden">
+      {/* Playful background shapes */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-1/3 -right-1/3 w-2/3 h-2/3 bg-primary/5 rounded-[200px] transform rotate-6"></div>
+        <div className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-primary/5 rounded-[150px] transform -rotate-12"></div>
+        <div className="absolute top-1/3 right-1/3 w-48 h-48 bg-primary/5 rounded-full"></div>
+      </div>
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="inline-block text-[#F8941C] uppercase tracking-wider font-medium mb-4"
+              className="inline-block text-primary uppercase tracking-wider font-medium mb-4"
             >
               ČASTÉ OTÁZKY
             </motion.span>
@@ -70,12 +76,12 @@ export default function FAQ() {
                 className="bg-white rounded-2xl shadow-sm overflow-hidden"
               >
                 <button
-                  className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50"
+                  className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-primary/5 transition-colors duration-300"
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 >
-                  <span className="font-bold text-[#1E293B]">{faq.question}</span>
+                  <span className="font-bold text-[#1E293B] group-hover:text-primary transition-colors duration-300">{faq.question}</span>
                   <svg
-                    className={`w-6 h-6 transform transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
+                    className={`w-6 h-6 transform transition-transform text-primary ${openIndex === index ? 'rotate-180' : ''}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
