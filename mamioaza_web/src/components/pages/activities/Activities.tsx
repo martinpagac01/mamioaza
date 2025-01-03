@@ -101,10 +101,13 @@ export default function Activities() {
   }, [initialCategory]);
 
   const titleInViewOptions = useInView({ triggerOnce: true, threshold: 0.1 });
-  const { ref: titleRef, inView: titleInView } = titleInViewOptions;
-
   const activitiesInViewOptions = useInView({ triggerOnce: true, threshold: 0.1 });
-  const { ref: activitiesRef, inView: activitiesInView } = activitiesInViewOptions;
+
+  const titleRef = useRef(null);
+  const activitiesRef = useRef(null);
+
+  const { ref: titleInViewRef, inView: titleInView } = titleInViewOptions;
+  const { ref: activitiesInViewRef, inView: activitiesInView } = activitiesInViewOptions;
 
   const categories = [
     { id: 'all', name: 'Všetky aktivity', color: '#1E293B' },
@@ -274,9 +277,6 @@ export default function Activities() {
   const filteredActivities = activities.filter(activity =>
     selectedCategory === 'all' ? true : activity.category === selectedCategory
   );
-
-  const titleRef = useRef(null);
-  const activitiesRef = useRef(null);
 
   const springTransition = {
     type: "spring",
