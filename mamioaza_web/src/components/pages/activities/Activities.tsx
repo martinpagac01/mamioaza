@@ -7,6 +7,7 @@ import { MdCalendarToday } from 'react-icons/md';
 import { FaBaby, FaUsers, FaFemale, FaHeart } from 'react-icons/fa';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import PageTitle from '@/components/shared/PageTitle';
 
 type Category = 'all' | 'children' | 'mother' | 'family';
 
@@ -93,6 +94,7 @@ export default function Activities() {
   const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState<Category>('all');
   const initialCategory = searchParams.get('category') as Category;
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   useEffect(() => {
     if (initialCategory) {
@@ -100,20 +102,11 @@ export default function Activities() {
     }
   }, [initialCategory]);
 
-  const titleInViewOptions = useInView({ triggerOnce: true, threshold: 0.1 });
-  const activitiesInViewOptions = useInView({ triggerOnce: true, threshold: 0.1 });
-
-  const titleRef = useRef(null);
-  const activitiesRef = useRef(null);
-
-  const { ref: titleInViewRef, inView: titleInView } = titleInViewOptions;
-  const { ref: activitiesInViewRef, inView: activitiesInView } = activitiesInViewOptions;
-
   const categories = [
-    { id: 'all', name: 'Všetky aktivity', color: '#1E293B' },
-    { id: 'children', name: 'Pre najmenších', color: '#9747FF' },
-    { id: 'mother', name: 'Pre mamičky', color: '#4C7BF4' },
-    { id: 'family', name: 'Pre rodiny', color: '#FF6B6B' }
+    { id: 'all', name: 'Všetky aktivity', color: '#1E293B', icon: FaHeart },
+    { id: 'children', name: 'Pre najmenších', color: '#9747FF', icon: FaBaby },
+    { id: 'mother', name: 'Pre mamičky', color: '#4C7BF4', icon: FaFemale },
+    { id: 'family', name: 'Pre rodiny', color: '#FF6B6B', icon: FaUsers }
   ];
 
   const activities: ActivityCardProps[] = [
@@ -278,230 +271,74 @@ export default function Activities() {
     selectedCategory === 'all' ? true : activity.category === selectedCategory
   );
 
-  const springTransition = {
-    type: "spring",
-    damping: 30,
-    stiffness: 200
-  };
-
-  const smoothTransition = {
-    duration: 0.7,
-    ease: [0.22, 1, 0.36, 1]
-  };
-
-  const titleAnimation = {
-    hidden: { 
-      opacity: 0,
-      scale: 0.9,
-      filter: "blur(5px)"
-    },
-    visible: { 
-      opacity: 1,
-      scale: 1,
-      filter: "blur(0px)",
-      transition: smoothTransition
-    }
-  };
-
-  const cardAnimation = {
-    hidden: { 
-      opacity: 0,
-      scale: 0.8,
-      y: 20,
-      filter: "blur(10px)"
-    },
-    visible: { 
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        ...smoothTransition,
-        delay: 0.1
-      }
-    }
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1
-      }
-    }
-  };
-
-  // Category colors matching badge colors exactly
-  const categoryColors = {
-    all: '#EAB308', // primary yellow
-    children: '#9747FF', // purple from children badges
-    mother: '#4C7BF4', // blue from mother badges
-    family: '#FF6B6B', // red from family badges,
-  };
-
   return (
     <div className="min-h-screen bg-cream">
-      {/* Title Section */}
-      <section ref={titleRef} className="relative py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <motion.span
-              initial={{ opacity: 0, scale: 0.9, filter: "blur(5px)" }}
-              animate={titleInView ? { 
-                opacity: 1, 
-                scale: 1, 
-                filter: "blur(0px)",
-                transition: smoothTransition
-              } : { opacity: 0, scale: 0.9, filter: "blur(5px)" }}
-              className="inline-block text-primary uppercase tracking-wider font-medium mb-4"
-            >
-              AKTIVITY
-            </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, scale: 0.9, filter: "blur(5px)" }}
-              animate={titleInView ? { 
-                opacity: 1, 
-                scale: 1, 
-                filter: "blur(0px)",
-                transition: {
-                  ...smoothTransition,
-                  delay: 0.1
-                }
-              } : { opacity: 0, scale: 0.9, filter: "blur(5px)" }}
-              className="text-[#1E293B] text-4xl lg:text-5xl font-bold mb-6"
-            >
-              Naše aktivity
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, scale: 0.9, filter: "blur(5px)" }}
-              animate={titleInView ? { 
-                opacity: 1, 
-                scale: 1, 
-                filter: "blur(0px)",
-                transition: {
-                  ...smoothTransition,
-                  delay: 0.2
-                }
-              } : { opacity: 0, scale: 0.9, filter: "blur(5px)" }}
-              className="text-[#475569] text-xl max-w-3xl mx-auto"
-            >
-              Objavte širokú škálu aktivít pre deti, mamičky a celé rodiny
-            </motion.p>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto">
-        {/* Filter Section */}
-        <motion.div
-          ref={activitiesRef}
-          variants={filterAnimation}
-          initial="hidden"
-          animate={activitiesInView ? "visible" : "hidden"}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setSelectedCategory('all')}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 inline-flex items-center`}
-            style={{
-              color: selectedCategory === 'all' ? 'white' : categoryColors.all,
-              backgroundColor: selectedCategory === 'all' ? categoryColors.all : 'white',
-              boxShadow: selectedCategory === 'all'
-                ? `0 4px 14px 0 ${categoryColors.all}25`
-                : '0 2px 6px 0 rgba(0, 0, 0, 0.05)'
-            }}
-          >
-            <FaHeart className="mr-2 w-4 h-4" />
-            Všetky aktivity
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setSelectedCategory('children')}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 inline-flex items-center`}
-            style={{
-              color: selectedCategory === 'children' ? 'white' : categoryColors.children,
-              backgroundColor: selectedCategory === 'children' ? categoryColors.children : 'white',
-              boxShadow: selectedCategory === 'children'
-                ? `0 4px 14px 0 ${categoryColors.children}25`
-                : '0 2px 6px 0 rgba(0, 0, 0, 0.05)'
-            }}
-          >
-            <FaBaby className="mr-2 w-4 h-4" />
-            Pre najmenších
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setSelectedCategory('mother')}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 inline-flex items-center`}
-            style={{
-              color: selectedCategory === 'mother' ? 'white' : categoryColors.mother,
-              backgroundColor: selectedCategory === 'mother' ? categoryColors.mother : 'white',
-              boxShadow: selectedCategory === 'mother'
-                ? `0 4px 14px 0 ${categoryColors.mother}25`
-                : '0 2px 6px 0 rgba(0, 0, 0, 0.05)'
-            }}
-          >
-            <FaHeart className="mr-2 w-4 h-4" />
-            Pre mamičky
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setSelectedCategory('family')}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 inline-flex items-center`}
-            style={{
-              color: selectedCategory === 'family' ? 'white' : categoryColors.family,
-              backgroundColor: selectedCategory === 'family' ? categoryColors.family : 'white',
-              boxShadow: selectedCategory === 'family'
-                ? `0 4px 14px 0 ${categoryColors.family}25`
-                : '0 2px 6px 0 rgba(0, 0, 0, 0.05)'
-            }}
-          >
-            <FaUsers className="mr-2 w-4 h-4" />
-            Pre rodiny
-          </motion.button>
-        </motion.div>
-
-        {/* Activities Grid */}
-        <AnimatePresence mode="wait">
+      <div className="py-12 px-4 sm:px-6 lg:px-8">
+        <PageTitle 
+          title="Aktivity" 
+          subtitle="Pozrite si všetky naše aktivity pre deti, mamičky a celé rodiny"
+          className="mb-12"
+        />
+        
+        <div className="max-w-7xl mx-auto">
+          {/* Filter Section */}
           <motion.div
-            key={selectedCategory}
-            variants={staggerContainer}
+            ref={ref}
+            variants={filterAnimation}
             initial="hidden"
-            animate="visible"
-            exit="hidden"
-            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            animate={inView ? "visible" : "hidden"}
+            className="flex flex-wrap justify-center gap-4 mb-12"
           >
-            {filteredActivities.map((activity, index) => (
-              <motion.div
-                key={index}
-                variants={cardAnimation}
+            {categories.map((category) => (
+              <motion.button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id as Category)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 inline-flex items-center`}
+                style={{
+                  color: selectedCategory === category.id ? 'white' : category.color,
+                  backgroundColor: selectedCategory === category.id ? category.color : 'white',
+                  boxShadow: selectedCategory === category.id
+                    ? `0 4px 14px 0 ${category.color}25`
+                    : '0 2px 6px 0 rgba(0, 0, 0, 0.05)'
+                }}
               >
-                <ActivityCard {...activity} />
-              </motion.div>
+                <category.icon className="mr-2 w-4 h-4" />
+                {category.name}
+              </motion.button>
             ))}
           </motion.div>
-        </AnimatePresence>
 
-        {/* Schedule Link */}
-        <div className="text-center mt-16">
-          <p className="text-gray-600 mb-6">
-            Chcete sa dozvedieť viac o našich aktivitách alebo sa prihlásiť na kurz?
-          </p>
-          <Link 
-            href="/rozvrh" 
-            className="inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full text-lg font-medium transition-all hover:-translate-y-0.5"
-          >
-            <MdCalendarToday className="w-5 h-5 mr-2" />
-            Pozrite si rozvrh
-          </Link>
+          {/* Activities Grid */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedCategory}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {filteredActivities.map((activity, index) => (
+                <ActivityCard key={activity.title} {...activity} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Schedule Link */}
+          <div className="text-center mt-16">
+            <p className="text-gray-600 mb-6">
+              Chcete sa dozvedieť viac o našich aktivitách alebo sa prihlásiť na kurz?
+            </p>
+            <Link 
+              href="/rozvrh" 
+              className="inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full text-lg font-medium transition-all hover:-translate-y-0.5"
+            >
+              <MdCalendarToday className="w-5 h-5 mr-2" />
+              Pozrite si rozvrh
+            </Link>
+          </div>
         </div>
       </div>
     </div>
