@@ -91,7 +91,7 @@ export default function Features() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl max-w-3xl mx-auto leading-relaxed"
+              className="text-2xl max-w-3xl mx-auto leading-relaxed text-[#475569]"
             >
               V našom centre vytvárame bezpečný priestor pre rozvoj vašich detí
             </motion.p>

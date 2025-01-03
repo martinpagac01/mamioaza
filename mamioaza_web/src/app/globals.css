@@ -18,16 +18,30 @@
   --neutral-50: #FAFAFA;
   --neutral-100: #F5F5F5;
   --neutral-200: #E5E5E5;
+  --neutral-600: #475569;
   --neutral-800: #262626;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  color: var(--neutral-800);
+  color: var(--neutral-600);
   background-color: var(--neutral-50);
+  overscroll-behavior-y: none;
+  font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--neutral-800);
+  font-weight: 700;
+}
+
+p {
+  font-weight: 500;
 }
 
 /* Logo color override */
@@ -57,6 +71,26 @@ body {
 
 .animate-float-delayed {
   animation: float 6s ease-in-out 3s infinite;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  will-change: transform;
+}
+
+.will-animate {
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer components {

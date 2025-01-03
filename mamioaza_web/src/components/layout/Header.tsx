@@ -15,6 +15,7 @@ export default function Header() {
   const mainNavLinks = [
     { href: '/o-centre', label: 'O Centre' },
     { href: '/aktivity', label: 'Aktivity' },
+    { href: '/galeria', label: 'Galéria' },
     { href: '/pomozte-nam', label: 'Pomôžte nám' },
     { href: '/kontakt', label: 'Kontakt' },
   ];

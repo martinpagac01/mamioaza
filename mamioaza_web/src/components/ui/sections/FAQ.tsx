@@ -113,7 +113,7 @@ export default function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-2xl max-w-3xl mx-auto leading-relaxed"
+              className="text-2xl max-w-3xl mx-auto leading-relaxed text-[#475569]"
             >
               Odpovede na najčastejšie otázky o našom materskom centre
             </motion.p>

@@ -33,7 +33,7 @@ export default function CallToAction() {
             viewport={{ margin: "100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
             style={{ willChange: 'transform, opacity' }}
-            className="text-lg md:text-xl text-white/90 mb-12"
+            className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto"
           >
             Vytvárame bezpečný priestor pre vaše deti, kde môžu rásť, učiť sa a zabávať sa.
           </motion.p>

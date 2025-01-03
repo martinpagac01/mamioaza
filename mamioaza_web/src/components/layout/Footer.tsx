@@ -152,8 +152,8 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-neutral-200/80">
           <div className="container mx-auto px-4 py-6">
-            <p className="text-center text-neutral-600">
-              {new Date().getFullYear()} Mami-Oáza. Všetky práva vyhradené.
+            <p className="text-center text-neutral-600 text-sm">
+              &copy; 2008-2025 Materské centrum MAMI - OÁZA. Všetky práva vyhradené.
             </p>
           </div>
         </div>

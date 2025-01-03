@@ -18,6 +18,10 @@ const config: Config = {
         'accent-light': '#FFF0F0', // Soft pink background
         'neutral-warm': '#FFF4E6', // Warm background
         'neutral-cool': '#F8FAFF', // Cool background
+        'text': {
+          DEFAULT: '#475569',
+          dark: '#262626',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

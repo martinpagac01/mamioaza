@@ -95,23 +95,26 @@ export default function ActivityCategories() {
             <motion.span 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="inline-block text-[#F8941C] uppercase tracking-wider font-medium mb-4"
+              viewport={{ margin: "-20% 0px -20% 0px", once: true }}
+              className="inline-block text-[#F8941C] uppercase tracking-wider font-medium mb-4 will-animate"
             >
               NAŠE AKTIVITY
             </motion.span>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ margin: "-20% 0px -20% 0px", once: true }}
               transition={{ delay: 0.1 }}
-              className="text-5xl lg:text-6xl font-bold mb-6"
+              className="text-5xl lg:text-6xl font-bold mb-6 text-text-dark will-animate"
             >
               Čo u nás nájdete?
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ margin: "-20% 0px -20% 0px", once: true }}
               transition={{ delay: 0.2 }}
-              className="text-2xl max-w-3xl mx-auto leading-relaxed"
+              className="text-2xl max-w-3xl mx-auto leading-relaxed text-text will-animate font-medium"
             >
               Ponúkame široké spektrum aktivít pre deti aj rodičov.
               Každý si u nás nájde to svoje.
