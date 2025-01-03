@@ -275,8 +275,8 @@ export default function Activities() {
     <div className="min-h-screen bg-cream">
       <div className="py-12 px-4 sm:px-6 lg:px-8">
         <PageTitle 
-          title="Aktivity" 
-          subtitle="Pozrite si všetky naše aktivity pre deti, mamičky a celé rodiny"
+          title="Aktivity"
+          subtitle="AKTIVITY"
           className="mb-12"
         />
         
