@@ -18,7 +18,13 @@ export default function PromoVideo() {
             Pozrite si, ako to u nás vyzerá a čo všetko spolu zažívame
           </p>
           
-          <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer group" onClick={() => setIsModalOpen(true)}>
+          <div 
+            className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer group touch-none" 
+            onClick={() => setIsModalOpen(true)}
+            tabIndex={-1}
+            role="button"
+            aria-label="Play video"
+          >
             {/* Custom Thumbnail */}
             <img 
               src={thumbnailUrl} 
