@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --primary: #FF6B4A;
+  --primary-dark: #FF5A39;
+  --accent: #FFB938;
+  --accent-dark: #FF9F00;
+  
+  /* Fun Colors */
+  --fun-purple: #A259FF;
+  --fun-green: #4ADE80;
+  --fun-blue: #38BDF8;
+  --fun-pink: #EC4899;
+  
+  /* Neutral Colors */
+  --neutral-50: #FAFAFA;
+  --neutral-100: #F5F5F5;
+  --neutral-200: #E5E5E5;
+  --neutral-800: #262626;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--neutral-800);
+  background-color: var(--neutral-50);
+}
+
+/* Logo color override */
+#logo-svg path {
+  fill: #F8941C !important;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--rotation, 0deg));
+  }
+  100% {
+    transform: translateY(0px) rotate(var(--rotation, 0deg));
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out 3s infinite;
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white px-8 py-3 rounded-full 
+           hover:bg-primary-dark transition-all duration-300 
+           hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-primary border-2 border-primary/10 px-8 py-3 
+           rounded-full hover:bg-primary/5 transition-all 
+           duration-300 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .gradient-blur {
+    @apply bg-gradient-to-b from-neutral-50/80 to-neutral-50/20 backdrop-blur-sm;
+  }
+}

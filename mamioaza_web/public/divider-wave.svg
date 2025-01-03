@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440" height="32" viewBox="0 0 1440 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path id="divider-wave" d="M0 32V16C240 32 480 0 720 16C960 32 1200 0 1440 16V32H0Z" fill="currentColor"/>
+</svg>
