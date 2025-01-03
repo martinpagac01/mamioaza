@@ -61,17 +61,42 @@ const reviews = [
 
 export default function Reviews() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [[page, direction], setPage] = useState([0, 0]);
 
   const nextReview = () => {
     setCurrentIndex((prevIndex) => 
       prevIndex === reviews.length - 1 ? 0 : prevIndex + 1
     );
+    setPage([page + 1, 1]);
   };
 
   const prevReview = () => {
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? reviews.length - 1 : prevIndex - 1
     );
+    setPage([page - 1, -1]);
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+  };
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
   };
 
   return (
@@ -114,56 +139,72 @@ export default function Reviews() {
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {/* Review Card */}
+              {/* Review card */}
               <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-primary/5"
+                key={page}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 }
+                }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={(e, { offset, velocity }) => {
+                  const swipe = swipePower(offset.x, velocity.x);
+
+                  if (swipe < -swipeConfidenceThreshold) {
+                    nextReview();
+                  } else if (swipe > swipeConfidenceThreshold) {
+                    prevReview();
+                  }
+                }}
+                className="bg-white rounded-3xl shadow-xl p-8 md:p-12 relative z-10 cursor-grab active:cursor-grabbing"
               >
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-primary/10">
-                    <Image
-                      src={reviews[currentIndex].photo}
-                      alt={reviews[currentIndex].author}
-                      fill
-                      className="object-cover"
-                    />
+                {/* Review content */}
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  <div className="flex-shrink-0">
+                    <div className="w-20 h-20 rounded-full overflow-hidden">
+                      <Image 
+                        src={reviews[currentIndex].photo} 
+                        alt={reviews[currentIndex].author}
+                        width={80}
+                        height={80}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </div>
                   <div>
-                    <div className="flex items-center gap-1 mb-2">
+                    <div className="flex items-center gap-2 mb-4">
                       {[...Array(reviews[currentIndex].rating)].map((_, i) => (
-                        <FaStar key={i} className="w-5 h-5 text-primary" />
+                        <FaStar key={i} className="text-primary w-5 h-5" />
                       ))}
                     </div>
-                    <h3 className="font-bold text-[#1E293B] text-lg">
-                      {reviews[currentIndex].author}
-                    </h3>
+                    <h3 className="text-xl font-semibold mb-4">{reviews[currentIndex].author}</h3>
+                    <p className="text-gray-600 leading-relaxed">{reviews[currentIndex].text}</p>
                   </div>
                 </div>
-                
-                <p className="text-[#475569] text-lg leading-relaxed">
-                  "{reviews[currentIndex].text}"
-                </p>
               </motion.div>
 
-              {/* Navigation Buttons */}
-              <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between pointer-events-none">
+              {/* Navigation buttons */}
+              <div className="flex justify-center gap-4 mt-8">
                 <button
                   onClick={prevReview}
-                  className="transform -translate-x-6 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-primary hover:text-white hover:bg-primary transition-all duration-300 pointer-events-auto border border-primary/10"
+                  className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
                   aria-label="Previous review"
                 >
-                  <HiOutlineArrowLeft className="w-5 h-5" />
+                  <HiOutlineArrowLeft className="w-6 h-6 text-primary" />
                 </button>
                 <button
                   onClick={nextReview}
-                  className="transform translate-x-6 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-primary hover:text-white hover:bg-primary transition-all duration-300 pointer-events-auto border border-primary/10"
+                  className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow"
                   aria-label="Next review"
                 >
-                  <HiOutlineArrowRight className="w-5 h-5" />
+                  <HiOutlineArrowRight className="w-6 h-6 text-primary" />
                 </button>
               </div>
             </div>

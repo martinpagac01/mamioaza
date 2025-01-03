@@ -18,25 +18,31 @@ export default function CallToAction() {
       <div className="container mx-auto px-4 relative">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            whileInView={{ opacity: 1, transform: 'translateY(0)' }}
+            viewport={{ margin: "100px" }}
             transition={{ duration: 0.6 }}
+            style={{ willChange: 'transform, opacity' }}
             className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
             Pridajte sa k našej komunite
           </motion.h2>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            whileInView={{ opacity: 1, transform: 'translateY(0)' }}
+            viewport={{ margin: "100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
+            style={{ willChange: 'transform, opacity' }}
             className="text-lg md:text-xl text-white/90 mb-12"
           >
             Vytvárame bezpečný priestor pre vaše deti, kde môžu rásť, učiť sa a zabávať sa.
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            whileInView={{ opacity: 1, transform: 'translateY(0)' }}
+            viewport={{ margin: "100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ willChange: 'transform, opacity' }}
           >
             <Link 
               href="/kontakt" 
