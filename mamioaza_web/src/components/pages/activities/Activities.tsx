@@ -276,8 +276,8 @@ export default function Activities() {
 
   const titleRef = useRef(null);
   const activitiesRef = useRef(null);
-  const titleInView = useInView(titleRef, { triggerOnce: true, threshold: 0.1 });
-  const activitiesInView = useInView(activitiesRef, { triggerOnce: true, threshold: 0.1 });
+  const titleInView = useInView(titleRef);
+  const activitiesInView = useInView(activitiesRef);
 
   const springTransition = {
     type: "spring",
